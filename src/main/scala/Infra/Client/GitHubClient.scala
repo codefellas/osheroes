@@ -1,17 +1,20 @@
 import scalaj.http._
-import io.circe._, io.circe.parser._
+import net.liftweb.json.DefaultFormats
+import net.liftweb.json._
 
-import Model.{GitHubProject, GitHubUser}
+import Model._
 
 package Infra.Client {
+
   class GitHubClient {
+    implicit val formats = DefaultFormats
+
     def getUserProjects(user: GitHubUser): List[GitHubProject] = {
       val response: HttpResponse[String] = Http(s"https://api.github.com/users/${user.login}/repos?type=all").param("q","monkeys").asString
-      val parseResult = parse(response.body)
+      val parsedJson = parse(response.body)
 
-      val result = parseResult.b.a.map(x -> List())
-
-      return List()
+      val result = parsedJson.children.map(project => project.extract[GitHubProject])
+      return result
     }
   }
 }

@@ -20,9 +20,7 @@ repositories {
 dependencies {
     compile 'com.sparkjava:spark-core:2.2'
     compile 'org.scalaj:scalaj-http_2.11:2.3.0'
-    compile 'io.circe:circe-core_2.11:0.7.0'
-    compile 'io.circe:circe-generic_2.11:0.7.0'
-    compile 'io.circe:circe-parser_2.11:0.7.0'
+    compile 'net.liftweb:lift-json_2.11:2.6.3'
     compile 'com.twilio.sdk:twilio-java-sdk:4.4.5'
     compile "org.scala-lang:scala-library:2.11.8"
 

@@ -1,6 +1,8 @@
+import Model.GitHubUser
 import org.scalatest._
 
 import Infra.Client._
+
 
 class GitHubClientTest extends FlatSpec with Matchers {
   it should "read GitHub user projects" in {
